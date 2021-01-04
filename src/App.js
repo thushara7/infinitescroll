@@ -27,7 +27,8 @@ const WrapperImages = styled.section`
   max-width: 70rem;
   margin: 4rem auto;
   display: grid;
-  grid-gap: 1em;
+  grid-row-gap: 5rem;
+  grid-column-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-auto-rows: 300px;
 `;
@@ -41,6 +42,7 @@ function App() {
   }, []);
 
   const fetchImages = (count = 10) => {
+    // currently hardcoding page value. more optimised way would be to derive the dynamic image count based on the current screen size.
     const pageCount = page < 3 ? page + 1 : 1;
     console.log(pageCount);
     setPage(pageCount);
@@ -82,6 +84,7 @@ function App() {
                   url={image.urls.thumb}
                   name={image.alt_description}
                   key={image.id}
+                  {...image}
                 />
               )}
             </div>

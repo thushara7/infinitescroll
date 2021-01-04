@@ -8,9 +8,14 @@ const Img = styled.img`
 `;
 
 export const UnsplashImage = props => {
+  console.log(">>>>", props);
   return (
     <>
       <Img key={props.name} src={props.url} alt="" />
+      <div>
+        <div>{props.name}</div>
+        <div>{props.created_at}</div>
+      </div>
     </>
   );
 };
