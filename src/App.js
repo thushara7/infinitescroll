@@ -3,6 +3,7 @@ import { Heading } from "./components/Heading";
 import { UnsplashImage } from "./components/UnsplashImage";
 import { Loader } from "./components/Loader";
 import { Video } from "./components/video";
+import { AddMediaForm } from "./components/AddMediaForm";
 
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -68,6 +69,8 @@ function App() {
       <Heading />
       <GlobalStyle />
 
+      <AddMediaForm />
+
       <InfiniteScroll
         dataLength={images.length}
         next={fetchImages}
@@ -78,7 +81,7 @@ function App() {
           {images.map(image => (
             <div>
               {image.id === "video" ? (
-                <Video url={image.url} />
+                <Video url={image.url} {...image} />
               ) : (
                 <UnsplashImage
                   url={image.urls.thumb}
