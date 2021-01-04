@@ -17,6 +17,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-infinite-scroll-component": "^5.0.4",
+    "react-masonry-css": "^1.0.14",
     "react-player": "^2.7.2",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.0",

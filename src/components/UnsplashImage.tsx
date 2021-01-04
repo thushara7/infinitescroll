@@ -6,7 +6,8 @@ const useStyles = makeStyles(theme => ({
   img: {
     width: "100%",
     height: "100%",
-    objectFit: "cover"
+    objectFit: "cover",
+    borderRadius: "15px"
   },
   name: {
     fontSize: "14px",
@@ -26,7 +27,7 @@ export const UnsplashImage = (props: any) => {
   return (
     <>
       <img className={classes.img} key={props.name} src={props.url} alt="" />
-      <div>
+      <div style={{ marginBottom: "2rem" }}>
         <div className={classes.name}>{props.name}</div>
         <div className={classes.date}>{props.created_at}</div>
       </div>

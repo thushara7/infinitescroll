@@ -1,42 +1,92 @@
 import React, { useState, useEffect } from "react";
+import Masonry from "react-masonry-css";
+import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
+
+// components
 import { Heading } from "./components/Heading";
 import { UnsplashImage } from "./components/UnsplashImage";
 import { Loader } from "./components/Loader";
 import { Video } from "./components/video";
 import { AddMediaForm } from "./components/AddMediaForm";
 
-import axios from "axios";
-import InfiniteScroll from "react-infinite-scroll-component";
+// stylesheets
+// import styled from "styled-components";
+// import { createGlobalStyle } from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
 
-import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+const useStyles = makeStyles(theme => ({
+  container: {
+    backgroundColor: "black",
+    margin: "-1%"
+  },
+  scroll_container: {
+    margin: "0",
+    padding: "0",
+    boxSizing: "border-box",
+    fontFamily: "sans-serif"
+  },
+  img: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover"
+  },
+  name: {
+    fontSize: "14px",
+    color: "dimgrey",
+    lineHeight: "22px"
+  },
+  date: {
+    fontWeight: "normal",
+    fontSize: "12px",
+    color: "lightgrey"
+  },
+  masonryGrid: {
+    display: "-webkit-box" /* Not needed if autoprefixing */,
+    display: "-ms-flexbox" /* Not needed if autoprefixing */,
+    display: "flex",
+    marginLeft: "-30px" /* gutter size offset */,
+    width: "auto"
+  },
+  masonryGrid_column: {
+    paddingLeft: "30px",
+    backgroundClip: "padding-box"
+  }
+}));
 
 // Style
-const GlobalStyle = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+// const GlobalStyle = createGlobalStyle`
+//   * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+//   }
 
-  body {
-    font-family: sans-serif;
-  }
-`;
+//   body {
+//     font-family: sans-serif;
+//   }
+// `;
 
-const WrapperImages = styled.section`
-  max-width: 70rem;
-  margin: 4rem auto;
-  display: grid;
-  grid-row-gap: 5rem;
-  grid-column-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-auto-rows: 300px;
-`;
+// const WrapperImages = styled.section`
+//   max-width: 70rem;
+//   margin: 4rem auto;
+//   display: grid;
+//   grid-row-gap: 5rem;
+//   grid-column-gap: 1rem;
+//   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+//   grid-auto-rows: 300px;
+// `;
 
 function App() {
+  const classes = useStyles();
   const [images, setImage] = useState([]);
   const [page, setPage] = useState(1);
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1
+  };
 
   useEffect(() => {
     fetchImages();
@@ -65,19 +115,41 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       <Heading />
-      <GlobalStyle />
+      <div className={classes.scroll_container}>
+        <AddMediaForm />
 
-      <AddMediaForm />
-
-      <InfiniteScroll
-        dataLength={images.length}
-        next={fetchImages}
-        hasMore={true}
-        loader={<Loader />}
-      >
-        <WrapperImages>
+        <InfiniteScroll
+          dataLength={images.length}
+          next={fetchImages}
+          hasMore={true}
+          loader={<Loader />}
+          style={{ margin: "2em" }}
+        >
+          {
+            <Masonry
+              breakpointCols={breakpointColumnsObj}
+              className={classes.masonryGrid}
+              columnClassName={classes.masonryGrid_column}
+            >
+              {images.map(image => (
+                <div>
+                  {image.id === "video" ? (
+                    <Video url={image.url} {...image} />
+                  ) : (
+                    <UnsplashImage
+                      url={image.urls.thumb}
+                      name={image.alt_description}
+                      key={image.id}
+                      {...image}
+                    />
+                  )}
+                </div>
+              ))}
+            </Masonry>
+          }
+          {/* <WrapperImages>
           {images.map(image => (
             <div>
               {image.id === "video" ? (
@@ -92,8 +164,9 @@ function App() {
               )}
             </div>
           ))}
-        </WrapperImages>
-      </InfiniteScroll>
+        </WrapperImages> */}
+        </InfiniteScroll>
+      </div>
     </div>
   );
 }

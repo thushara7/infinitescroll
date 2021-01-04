@@ -23,11 +23,11 @@ export const Video = (props: any) => {
   const classes = useStyles();
 
   return (
-    <>
+    <div style={{ marginBottom: "2rem" }}>
       <ReactPlayer url={props.url} width="100%" height="100%" />
       <div>
         <div className={classes.name}>{props.alt_description}</div>
       </div>
-    </>
+    </div>
   );
 };
