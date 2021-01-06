@@ -131,7 +131,6 @@ function App() {
     setImage(temp);
   };
   const handleAdd = item => {
-    debugger;
     const temp = [...images];
     temp.push(item);
     console.log(temp);
@@ -159,7 +158,7 @@ function App() {
             >
               {images.map(image => (
                 <div>
-                  {image.id === "video" ? (
+                  {image.mediaType === "video" ? (
                     <Video url={image.url} {...image} />
                   ) : (
                     <UnsplashImage

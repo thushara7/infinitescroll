@@ -78,7 +78,6 @@ export const UnsplashImage = (props: any) => {
   };
 
   const handleDeleteMedia = () => {
-    debugger;
     props.handleDelete(mediaContent);
   };
   return (
