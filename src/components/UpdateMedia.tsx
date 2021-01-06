@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   TextField,
@@ -21,40 +21,18 @@ const useStyles = makeStyles(theme => ({
     width: "100%"
   }
 }));
-interface mediaProps {
-  mediaType: string;
-  url: string;
-  name: string;
-  alt_description: string;
-  id: string;
-}
-interface urlsObj {
-  thumb: string;
-}
-export const AddMediaForm = (props: any) => {
+export const UpdateMediaForm = (props: any) => {
   //styles
   const classes = useStyles();
 
   //states
   const [open, setOpen] = React.useState(false);
   const [media, setMedia] = React.useState("");
-  const [mediaContent, setMediaContent] = useState<mediaProps>({
-    url: "",
-    mediaType: "",
-    name: "",
-    alt_description: "",
-    id: ""
-  });
+  const [mediaContent, setMediaContent] = React.useState({});
 
   //event handlers
   const handleMediaChange = (event: any) => {
-    setMediaContent({
-      url: "",
-      mediaType: "",
-      name: "",
-      alt_description: "",
-      id: ""
-    });
+    setMediaContent({});
     setMedia(event.target.value);
   };
   const handleClickOpen = () => {
@@ -67,20 +45,8 @@ export const AddMediaForm = (props: any) => {
     console.log("e", e);
     setMediaContent({
       ...mediaContent,
-      [e.target.name]: e.target.value
-    });
-  };
-  const handleCloseandAdd = () => {
-    setOpen(false);
-
-    props.onAdd({
-      mediaType: media,
-      alt_description: mediaContent.name,
-      name: mediaContent.name,
-      urls: {
-        thumb: mediaContent.url
-      },
-      id: Math.random()
+      [e.target.name]: e.target.value,
+      type: media
     });
   };
 
@@ -191,7 +157,7 @@ export const AddMediaForm = (props: any) => {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleCloseandAdd} color="primary">
+          <Button onClick={handleClose} color="primary">
             Upload
           </Button>
         </DialogActions>

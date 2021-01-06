@@ -1,5 +1,6 @@
 [
   {
+    "mediaType": "image",
     "id": "-UbtrFeBqDU",
     "created_at": "2020-12-03T05:38:42-05:00",
     "updated_at": "2021-01-03T02:21:37-05:00",
@@ -19,6 +20,7 @@
     }
   },
   {
+    "mediaType": "image",
     "id": "3CbG_rEfkVE",
     "created_at": "2020-12-08T08:14:29-05:00",
     "updated_at": "2021-01-01T13:20:28-05:00",
@@ -38,6 +40,7 @@
     }
   },
   {
+    "mediaType": "image",
     "id": "YRTB4aFZ9X0",
     "created_at": "2020-12-11T16:42:49-05:00",
     "updated_at": "2021-01-03T10:21:26-05:00",
@@ -57,6 +60,7 @@
     }
   },
   {
+    "mediaType": "image",
     "id": "9_XKYqP1xLw",
     "created_at": "2020-12-11T20:28:51-05:00",
     "updated_at": "2021-01-02T01:19:09-05:00",
@@ -76,6 +80,7 @@
     }
   },
   {
+    "mediaType": "image",
     "id": "cEO2gnyqleA",
     "created_at": "2020-12-13T15:33:07-05:00",
     "updated_at": "2021-01-02T17:20:47-05:00",
@@ -95,6 +100,7 @@
     }
   },
   {
+    "mediaType": "image",
     "id": "ahdVoN15Img",
     "created_at": "2020-12-14T14:07:43-05:00",
     "updated_at": "2021-01-01T13:20:37-05:00",
@@ -114,6 +120,7 @@
     }
   },
   {
+    "mediaType": "image",
     "id": "nVkux3dxsE4",
     "created_at": "2020-12-14T21:14:39-05:00",
     "updated_at": "2021-01-03T03:21:03-05:00",
@@ -133,6 +140,7 @@
     }
   },
   {
+    "mediaType": "image",
     "id": "RZrLBFSbtUQ",
     "created_at": "2020-12-17T21:58:51-05:00",
     "updated_at": "2021-01-03T08:25:04-05:00",
@@ -152,6 +160,7 @@
     }
   },
   {
+    "mediaType": "image",
     "id": "hSpfoOBmIKU",
     "created_at": "2020-12-28T07:22:56-05:00",
     "updated_at": "2021-01-02T22:17:25-05:00",
@@ -171,6 +180,7 @@
     }
   },
   {
+    "mediaType": "image",
     "id": "Jkf6a8ZziaQ",
     "created_at": "2021-01-02T06:47:55-05:00",
     "updated_at": "2021-01-02T23:25:16-05:00",

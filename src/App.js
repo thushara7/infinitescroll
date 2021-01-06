@@ -114,11 +114,35 @@ function App() {
       });
   };
 
+  const handleUpdate = item => {
+    let temp = [];
+    images.forEach((el, num) => {
+      if (el.id === item.id) {
+        temp.push(item);
+      } else {
+        temp.push(el);
+      }
+    });
+    setImage(temp);
+  };
+  const handleDelete = item => {
+    let temp = images.filter(el => el.id !== item.id);
+    console.log(temp);
+    setImage(temp);
+  };
+  const handleAdd = item => {
+    debugger;
+    const temp = [...images];
+    temp.push(item);
+    console.log(temp);
+    setImage(temp);
+  };
+
   return (
     <div className={classes.container}>
       <Heading />
       <div className={classes.scroll_container}>
-        <AddMediaForm />
+        <AddMediaForm onAdd={el => handleAdd(el)} />
 
         <InfiniteScroll
           dataLength={images.length}
@@ -143,6 +167,8 @@ function App() {
                       name={image.alt_description}
                       key={image.id}
                       {...image}
+                      handleUpdate={item => handleUpdate(item)}
+                      handleDelete={item => handleDelete(item)}
                     />
                   )}
                 </div>
